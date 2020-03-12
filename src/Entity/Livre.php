@@ -39,15 +39,27 @@ class Livre
     private $isbn;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Exemplaire", mappedBy="livre")
+     * @ORM\OneToMany(targetEntity="App\Entity\Exemplaire", mappedBy="livre", cascade={"persist"})
      */
     private $exemplaires;
 
-    public function __construct()
-    {
+    function __construct($arrayInit = []) {
+        $this->hydrate($arrayInit);
         $this->exemplaires = new ArrayCollection();
     }
 
+    function hydrate ($arrayInit){
+        foreach ($arrayInit as $propriete => $valeur){
+            $method = "set".ucfirst($propriete);
+            if (method_exists($this, $method ) ){
+                $this->$method ($valeur);
+            }
+            else {
+                //echo "<BR>La méthode SET de la propriété ".$propriete
+                //        . " n'existe pas";
+            }
+        }
+    }
     
 
     public function getId(): ?int
