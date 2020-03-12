@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ExemplesModeleController!{% endblock %}
+
+{% block body %}
+Bonjour je sui la vue de findOneBy
+<br>Le titre {{ livre.titre }}
+<br>Le prix {{ livre.prix }}
+<br>Le hobby de {{ unTab.nom }} est {{ unTab.hobby }}
+<br>
+
+{% for cle, valeur in unTab %}
+<br>{{ cle }}
+<br>{{ valeur }}
+{% endfor %}
+
+
+{% for cle, valeur in livreArray %}
+<br>{{ cle }}
+<br>{{ valeur }}
+{% endfor %}
+
+
+{% endblock %}

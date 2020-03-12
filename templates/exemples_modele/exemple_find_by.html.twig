@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ExemplesModeleController!{% endblock %}
+
+{% block body %}
+{% for cle,livre in livres %}
+    <br>
+    {{ livre.titre }}
+{% endfor %}
+
+{% endblock %}
